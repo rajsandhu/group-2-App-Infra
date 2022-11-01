@@ -1,10 +1,7 @@
-name: Terraform plan for every branch in Backend repo
-on:
-  push:
-    branches:    
-      - 'master'
+name: Terraform deployment (apply only on master branch)
+on: [push]
 jobs:
-  terraform-plan:
+  terraform-deployment:
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -25,7 +22,7 @@ jobs:
 
       - name: Terraform init
         run: terraform init
-
+      
       - name: Terraform validate
         run: terraform validate
 
@@ -33,4 +30,5 @@ jobs:
         run: terraform plan
 
       - name: Terraform apply
+        if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve

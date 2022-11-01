@@ -1,1 +1,3 @@
-# group-2-Backend
+# group-2-App-Infra
+
+- Implemented Github Actions

@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket         = "group-2-elk-4073724601872"
-    key            = "infrastruture/terraform.tfstates"    ###ask about the folder
+    key            = "group-2-elk/app-infra/terraform.tfstates"
     dynamodb_table = "terraform-lock"
   }
 }

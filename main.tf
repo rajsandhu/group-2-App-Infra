@@ -1,9 +1,15 @@
-data "aws_vpc" "" {
-   
+data "aws_vpc" "main" {
+    filter {
+    name   = "tag:Name"
+    values = [var.vpc_name]
+  }
 }
 
-data "aws_subent" "private_subnet"{
-
+data "aws_subnet" "subnet_g_ls_e"{
+  filter{
+    name   = "tag:Name"
+   values=[var.subnet_g_ls_e]
+  }
 }
 
 data "aws_ami" "aws_ubuntu_image"{

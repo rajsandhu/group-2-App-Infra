@@ -1,13 +1,13 @@
 resource "aws_instance" "logstash" {
   ami                    = data.aws_ami.aws_ubuntu_image.id
-  instance_type          = var.xxx
-  subnet_id              = aws_subnet.xxx.id
-  vpc_security_group_ids = [aws_security_group.xxx.id]
+  instance_type          = var.logstash_instance_type
+  subnet_id              = aws_subnet.private_subnet_name.id
+  vpc_security_group_ids = [aws_security_group.logstash_sg.id]
   key_name               = var.keypair_name
 
 
   tags = {
-    Name = "challenge server"
+    Name = "logstash server"
   }
 
 }
@@ -15,7 +15,7 @@ resource "aws_instance" "logstash" {
 resource "aws_security_group" "logstash_sg" {
     name="logstash_sg"
     descritption= "SG for the Logtstash server"
-    vpc_id = data.aws_vpc.xxx.id
+    vpc_id = data.aws_vpc.main.id
 }
 
 #Inbound connection

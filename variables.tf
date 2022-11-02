@@ -3,7 +3,7 @@ variable "vpc_name" {
     type=string
 }
 
-variable "instance_type" {
+variable "logstash_instance_type" {
     description="what is the ec2 type"
     type="string"
 }

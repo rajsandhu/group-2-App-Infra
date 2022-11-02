@@ -16,18 +16,22 @@ resource "aws_iam_instance_profile" "dev-resources-iam-profile" {
 }
 
 resource "aws_iam_role" "dev-resources-iam-role" {
-  name               = "dev-ssm-role"
-  description        = "The role for the developer resources EC2"
-  assume_role_policy = <<EOF
-{
-"Version": "2012-11-01",
-"Statement": {
-"Effect": "Allow",
-"Principal": {"Service": "ec2.amazonaws.com"},
-"Action": "sts:AssumeRole"
-}
-}
-EOF
+  name        = "dev-ssm-role"
+  description = "The role for the developer resources EC2"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+    }
+  )
   tags = {
     stack = "test"
   }

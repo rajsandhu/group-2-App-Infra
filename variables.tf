@@ -25,3 +25,12 @@ variable "aws_ami_owner" {
 variable "keypair_name" {
   type = string
 }
+
+variable "kibana_instance_type" {
+  description = "what is the ec2 type"
+  type        = string
+}
+
+variable "public_subnet_name" {
+  type = string
+}

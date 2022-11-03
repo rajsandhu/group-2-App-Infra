@@ -1,0 +1,6 @@
+logstash_instance_type = "t3.medium"
+private_subnet_name    = "LS_E-Subnet-Group"
+vpc_name               = "group2_vpc"
+aws_ami_owner          = "099720109477"
+aws_ami_name           = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
+keypair_name           = "group-2-elk"

@@ -25,9 +25,9 @@ resource "aws_volume_attachment" "kibana_ebs_attach" {
 }
 
 resource "aws_security_group" "kibana_sg" {
-  name         = "kibana_sg"
+  name        = "kibana_sg"
   description = "SG for the Kibana server"
-  vpc_id       = data.aws_vpc.main.id
+  vpc_id      = data.aws_vpc.main.id
 
   #Inbound connection
   ingress {

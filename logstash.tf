@@ -18,9 +18,9 @@ resource "aws_volume_attachment" "logstash_ebs_attach" {
   instance_id = aws_instance.logstash.id
 }
 resource "aws_security_group" "logstash_sg" {
-  name         = "logstash_sg"
+  name        = "logstash_sg"
   description = "SG for the Logtstash server"
-  vpc_id       = data.aws_vpc.main.id
+  vpc_id      = data.aws_vpc.main.id
 
 
   #Inbound connection
@@ -46,6 +46,5 @@ resource "aws_security_group" "logstash_sg" {
     protocol    = "-1" # TCP + UDP
     cidr_blocks = ["0.0.0.0/0"]
   }
-
 
 }

@@ -28,8 +28,11 @@ resource "aws_ebs_volume" "ebs_logstash" {
   tags = {
     Name = "EBS"
   }
-
-
 }
 
-
+data "aws_subnet" "subnet_kibana" {
+  filter {
+    name   = "tag:Name"
+    values = [var.public_subnet_name]
+  }
+}

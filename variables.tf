@@ -39,3 +39,12 @@ variable "elasticsearch_instance_type" {
   description = "what is the ec2 type"
   type        = string
 }
+
+variable "demo_server_instance_type" {
+  description = "what is the ec2 type"
+  type        = string
+}
+
+variable "demo_private_subnet_name"{
+   type = string
+}

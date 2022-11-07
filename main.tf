@@ -36,3 +36,10 @@ data "aws_subnet" "subnet_kibana" {
     values = [var.public_subnet_name]
   }
 }
+
+data "aws_subnet" "subnet_g_beats"{
+  filter {
+    name   = "tag:Name"
+    values = [var.demo_private_subnet_name]
+  }
+}

@@ -30,24 +30,8 @@ resource "aws_security_group" "demo_server_sg" {
   description = "SG for the Demo server"
   vpc_id      = data.aws_vpc.main.id
 
-#Inbound connection
- ingress {
-    description = "Allow access to the world"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1" # TCP + UDP
-    cidr_blocks = ["0.0.0.0/0"]
-  }
 
   # Outbound
-  egress {
-    description = "Allow access to the world"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1" # TCP + UDP
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
   egress {
     description = "Allow access to logstash"
     from_port   = 0

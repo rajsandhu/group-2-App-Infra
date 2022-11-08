@@ -6,12 +6,11 @@ resource "aws_instance" "elasticsearch" {
   key_name               = var.keypair_name
   iam_instance_profile   = "instance-profile"
 
-
   tags = {
     Name = "elasticsearch server"
   }
-
 }
+
 resource "aws_ebs_volume" "ebs_elasticsearch" {
   availability_zone = "eu-central-1a"
   size              = 50
@@ -19,6 +18,7 @@ resource "aws_ebs_volume" "ebs_elasticsearch" {
     Name = "EBS ElasticSearch"
   }
 }
+
 resource "aws_volume_attachment" "elasticsearch_ebs_attach" {
   device_name = "/dev/sdh"
   volume_id   = aws_ebs_volume.ebs_elasticsearch.id
@@ -34,13 +34,13 @@ resource "aws_security_group" "elasticsearch_sg" {
   #Inbound connection
 
   ingress {
-
     description = "Allow access to logstash"
     from_port   = 0
     to_port     = 0
     protocol    = "-1" # TCP + UDP
     security_groups = [aws_security_group.logstash_sg.id]
   }
+
   # outbound
   egress {
     description = "Allow access to the world"
@@ -50,7 +50,6 @@ resource "aws_security_group" "elasticsearch_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-
   #access to kibana
   egress {
     description = "ACCESS TO KIBANA"
@@ -59,7 +58,6 @@ resource "aws_security_group" "elasticsearch_sg" {
     protocol    = "-1"
   security_groups = [aws_security_group.kibana_sg.id]
   }
-
 }
 
 

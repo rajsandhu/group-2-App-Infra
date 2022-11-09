@@ -47,12 +47,12 @@ resource "aws_security_group" "logstash_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  egress {
-    description = "Allow access to Elasticsearch"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1" # TCP + UDP
-    security_groups =  [aws_security_group.elasticsearch_sg.id]
-  }
+  # egress {
+  #   description = "Allow access to Elasticsearch"
+  #   from_port   = 0
+  #   to_port     = 0
+  #   protocol    = "-1" # TCP + UDP
+  #   security_groups =  [aws_security_group.elasticsearch_sg.id]
+  # }
 
 }

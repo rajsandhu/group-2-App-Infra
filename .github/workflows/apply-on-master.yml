@@ -32,3 +32,12 @@ jobs:
       - name: Terraform apply
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve
+      
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          # Required, playbook filepath
+          playbook: playbook.yml
+          directory: ./ansible
+          options: |
+            --verbose

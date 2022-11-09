@@ -35,9 +35,9 @@ resource "aws_security_group" "elasticsearch_sg" {
 
   ingress {
     description = "Allow access to logstash"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1" # TCP + UDP
+    from_port   = 9600
+    to_port     = 9700
+    protocol    = "TCP"
     security_groups = [aws_security_group.logstash_sg.id]
   }
 

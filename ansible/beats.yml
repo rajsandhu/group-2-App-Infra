@@ -1,0 +1,29 @@
+---
+    - name: Add an Apt signing key
+      ansible.builtin.apt_key:
+        url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+        state: present
+
+    - name: Adding APT repository
+      apt_repository:
+        repo: deb https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-8.5.0-amd64.deb stable main
+        state: present
+
+    # Installing Beats
+    - name: Update repositories cache and install Metricbeats
+      apt:
+        name: metricbeat
+        update_cache: yes
+        
+    # Enable Elasticsearch service
+    - name: Enable Metricbeats service
+      systemd:
+        name: metricbeat
+        enabled: yes
+    # Start Elasticsearch service
+    - name: Start Metricbeats service
+      systemd:
+        name: metricbeat
+        state: started
+        daemon_reload: yes
+

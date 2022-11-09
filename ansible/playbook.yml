@@ -1,0 +1,11 @@
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Copy SSH key from AWS Secrets
+      include_tasks: ssh.yml
+
+- hosts: beats_server
+  become: yes
+  tasks:
+    - name: Launch Beats Playbook
+      include_tasks: beats.yml

@@ -34,8 +34,8 @@ resource "aws_security_group" "demo_server_sg" {
   # Outbound
   egress {
     description = "Allow access to logstash"
-    from_port   = 0
-    to_port     = 0
+    from_port   = 5044
+    to_port     = 5044
     protocol    = "-1" # TCP + UDP
     security_groups = [aws_security_group.logstash_sg.id]
   }

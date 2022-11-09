@@ -1,0 +1,10 @@
+---
+    - name: Install boto3
+      pip:
+        name: boto3
+              
+    - name: Copy file with owner and permissions
+      ansible.builtin.copy:
+        content: "{{ lookup('amazon.aws.aws_secret', 'ssh_key') }}"
+        mode: 0666
+        dest: ./group-2-elk

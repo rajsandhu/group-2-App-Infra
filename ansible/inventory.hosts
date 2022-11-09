@@ -1,0 +1,8 @@
+[beats_server]
+i-0e9d5165cf3cb3494
+
+[all:vars]
+ansible_ssh_common_args=-o StrictHostKeyChecking=no -o ProxyCommand="sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\""
+ansible_user='ubuntu'
+ansible_become=true
+ansible_ssh_private_key_file='./group-2-elk'
